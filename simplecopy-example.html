@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>simplecopy.js example</title>
+    <meta charset="UTF-8">
+    <style>
+      body { font-family: "lucida console", "monaco", "monospace"; color: #181818; }
+      input { font-size: 14pt; outline: none; }
+      button { position: relative; bottom: 0px; padding: 3px; font-size: 14pt; color: #f0f0f0; border-style: none; border-radius: 2px; background-color: #303030; cursor: pointer; outline: none; }
+    </style>
+    <script type="text/javascript" src="simplecopy.min.js"></script>
+  </head>
+  <body>
+    <h3>Enter some text here and click to copy it</h3>
+    <form action="javascript:simpleCopy(document.getElementById('textbox').value)">
+      <input id="textbox" type="text" autofocus></input>
+      <button>copy</button>
+    </form>
+  </body>
+</html>
