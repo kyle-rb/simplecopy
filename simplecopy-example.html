@@ -12,9 +12,9 @@
   </head>
   <body>
     <h3>Enter some text here and click to copy it</h3>
-    <form action="javascript:simpleCopy(document.getElementById('textbox').value)">
+    <form action="javascript:void(0);">
       <input id="textbox" type="text" autofocus></input>
-      <button>copy</button>
+      <button onclick="simpleCopy(document.getElementById('textbox').value)">copy</button>
     </form>
   </body>
 </html>
