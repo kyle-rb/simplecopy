@@ -1,8 +1,9 @@
+var node = document.createElement("DIV");
+node.style.position = "fixed"; // doesn't interact with the DOM
+node.style.color = "rgba(0,0,0,0)"; // transparent
+node.innerHTML = copyText;
+
 function simpleCopy(copyText) {
-    var node = document.createElement("DIV");
-    node.style.position = "fixed"; // doesn't interact with the DOM
-    node.style.color = "rgba(0,0,0,0)"; // transparent
-    node.innerHTML = copyText;
     document.body.appendChild(node);
     selectText(node);
     //document.designMode = "on"; // thought this had to be on to enable execCommand; MDN lied
