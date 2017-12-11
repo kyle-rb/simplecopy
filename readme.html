@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>simplecopy example</title>
+    <meta charset="UTF-8">
+    <style>
+      body { font-family: arial, sans-serif; color: #181818; line-height: 1.5 }
+      h1, h2, h3, h4, h5, h6 { font-family: "lucida console", "monaco", "monospace"; }
+      input { font-size: 14pt; outline: none; }
+      .btn { position: relative; bottom: 1px; padding: 4px; font-size: 14pt; color: #ffffff; border-style: none; border-radius: 2px; background-color: #303030; cursor: pointer; outline: none; }
+      .success { color: #20b040; }
+      .fail { color: #b02040; }
+      a { color: #2040b0; }
+    </style>
+    <script type="text/javascript" src="simplecopy.min.js"></script>
+    <script type="text/javascript">
+      var sourceCode = 'var simplecopy=function(){var d=document,b,cs,ss,f=false,n=d.createElement("DIV"),s=n.style;s.position="fixed";s.color="rgba(0,0,0,0)";function sc(t){if(!b){b=d.body};n.innerHTML=t;b.appendChild(n);ss=x(n);cs=d.execCommand("copy",f,null);b.removeChild(n);return ss&&cs};function x(n){var r,s,w=window.getSelection,c=b.createTextRange;if(c){r=c();r.moveToElementText(n);r.select();return !f}else if(w){s=w();r=d.createRange();r.selectNodeContents(n);s.removeAllRanges();s.addRange(r);return !f}else {return f}}return sc}();';
+
+      function display(result) {
+        var resultDisplay = document.getElementById("result");
+        if (result) {
+          resultDisplay.classList.add("success");
+          resultDisplay.classList.remove("fail");
+          resultDisplay.innerHTML = "Your text was successfully copied!";
+        }
+        else {
+          resultDisplay.classList.add("fail");
+          resultDisplay.classList.remove("success");
+          resultDisplay.innerHTML = "Failed to copy text. Your browser may not support the necessary APIs.";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>simplecopy</h1>
+    <p>This is a library I made to just perform the bare minimum functionality for copying to the clipboard using JavaScript. Actually, it's less of a library and more of just one function. I minified it by hand to make it as small as possible and also because I was bored. It's about 350 bytes minified and gzipped.</p>
+
+    <h2>Demo:</h2>
+    <p>Enter some text here and click to copy it</p>
+    <form action="javascript:void(0);">
+      <input id="textbox" type="text" autofocus></input>
+      <span class="btn" onclick="display(simplecopy(document.getElementById('textbox').value))">copy</span>
+      <span id="result"></span>
+    </form>
+    <br/>
+
+    <h2>How to Use:</h2>
+    <ol>
+      <li>Download and import it with <code>&lt;script src="simplecopy.min.js"&gt;</script></code>.
+        <ul>
+          <li>Or, just copy it into a script tag or another JavaScript source file.</li>
+          <li>Copy the full source code to your clipboard by clicking <span class="btn" onclick="simplecopy(sourceCode)">here</span>.</li>
+        </ul>
+      </li>
+      <li>Call <code>simplecopy("&lt;your text here&gt;")</code> from anywhere. (Note: this has to be triggered by a user action because of browser restrictions on copying.)</li>
+      <li>You're done.</li>
+    </ol>
+    <br/>
+
+    <h2>Compatibility:</h2>
+    <p>This works in Chrome and Firefox on Mac, Windows, and Android, as well as Edge on Windows (and probably some versions of IE). It works in newer versions of Safari, I think version 10 or 11 and up. I'm not 100% sure about anything on iOS. The <code>simplecopy</code> function returns <code>false</code> if it fails to execute properly.</p>
+    <br/>
+
+    <h2>License:</h2>
+    <p>This code is licensed under Creative Commons Zero, which means it's in the public domain, which means you can use it without any kind of attribution or anything. Just copy and paste the code.</p>
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/">https://creativecommons.org/publicdomain/zero/1.0/</a>
+    <br/><br/>
+  </body>
+</html>
