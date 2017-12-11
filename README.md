@@ -2,13 +2,7 @@
 This is a library I made to just perform the bare minimum functionality for copying to the clipboard using JavaScript. Actually, it's less of a library and more of just one function. I minified it by hand to make it as small as possible and also because I was bored. It's about 350 bytes minified and gzipped.
 
 ## Demo:
-    <p>Enter some text here and click to copy it</p>
-    <form action="javascript:void(0);">
-      <input id="textbox" type="text" autofocus></input>
-      <span class="btn" onclick="display(simplecopy(document.getElementById('textbox').value))">copy</span>
-      <span id="result"></span>
-    </form>
-    <br/>
+Coming soon. For now just download the demo.html file.
 
 ## How to Use:
 1. Download and import it with `<script src="simplecopy.min.js"></script>`.
