@@ -3,25 +3,31 @@ node.style.position = "fixed"; // doesn't interact with the DOM
 node.style.color = "rgba(0,0,0,0)"; // transparent
 node.innerHTML = copyText;
 
-function simpleCopy(copyText) {
+function simpleCopy(copyText, callback) {
     document.body.appendChild(node);
-    selectText(node);
-    //document.designMode = "on"; // thought this had to be on to enable execCommand; MDN lied
-    document.execCommand("copy", false, null); // copies whatever text is selected
+    var selectStatus = selectText(node);
+    var copyStatus = document.execCommand("copy", false, null); // copies currently selected text
     document.body.removeChild(node);
+    callback(selectStatus && copyStatus);
 }
 
 function selectText(node) {
     var range, selection;
-    if (document.body.createTextRange) {
-        range = document.body.createTextRange();
+    if (document.body.createTextRange) { // if the browser supports this old thing
+        range = document.body.createTextRange(); // create a text range
         range.moveToElementText(node);
         range.select();
-    } else if (window.getSelection) {
-        selection = window.getSelection();
-        range = document.createRange();
+        return true;
+    }
+    else if (window.getSelection) { // if the browser supports the newer thing (most of the time)
+        selection = window.getSelection(); // get a selection object
+        range = document.createRange(); // create a blank range object
         range.selectNodeContents(node);
-        selection.removeAllRanges();
-        selection.addRange(range);
+        selection.removeAllRanges(); // clear any current range from the selection
+        selection.addRange(range); // select the contents of the range
+        return true;
+    }
+    else {
+        return false;
     }
 }
