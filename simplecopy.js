@@ -2,7 +2,7 @@ var simplecopy = function() { // make a closure so we don't pollute the namespac
     var node = document.createElement("DIV");
     node.style.position = "fixed"; // doesn't interact with the DOM
     node.style.color = "rgba(0,0,0,0)"; // transparent
-    node.innerHTML = copyText;
+    node.innerText = copyText;
 
     function simplecopy(copyText, callback) {
         document.body.appendChild(node);
@@ -32,5 +32,5 @@ var simplecopy = function() { // make a closure so we don't pollute the namespac
             return false;
         }
     }
-    return simpleCopy;
+    return simplecopy;
 }();

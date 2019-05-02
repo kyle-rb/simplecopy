@@ -14,19 +14,19 @@
     </style>
     <script type="text/javascript" src="simplecopy.min.js"></script>
     <script type="text/javascript">
-      var sourceCode = 'var simplecopy=function(){var d=document,b,cs,ss,f=false,n=d.createElement("DIV"),s=n.style;s.position="fixed";s.color="rgba(0,0,0,0)";function sc(t){if(!b){b=d.body};n.innerHTML=t;b.appendChild(n);ss=x(n);cs=d.execCommand("copy",f,null);b.removeChild(n);return ss&&cs};function x(n){var r,s,w=window.getSelection,c=b.createTextRange;if(c){r=c();r.moveToElementText(n);r.select();return !f}else if(w){s=w();r=d.createRange();r.selectNodeContents(n);s.removeAllRanges();s.addRange(r);return !f}else {return f}}return sc}();';
+      var sourceCode = 'var simplecopy=function(){var d=document,b,cs,ss,f=false,n=d.createElement("DIV"),s=n.style;s.position="fixed";s.color="rgba(0,0,0,0)";function sc(t){if(!b){b=d.body};n.innerText=t;b.appendChild(n);ss=x(n);cs=d.execCommand("copy",f,null);b.removeChild(n);return ss&&cs};function x(n){var r,s,w=window.getSelection,c=b.createTextRange;if(c){r=c();r.moveToElementText(n);r.select();return !f}else if(w){s=w();r=d.createRange();r.selectNodeContents(n);s.removeAllRanges();s.addRange(r);return !f}else {return f}}return sc}();';
 
       function display(result) {
         var resultDisplay = document.getElementById("result");
         if (result) {
           resultDisplay.classList.add("success");
           resultDisplay.classList.remove("fail");
-          resultDisplay.innerHTML = "Your text was successfully copied!";
+          resultDisplay.innerText = "Your text was successfully copied!";
         }
         else {
           resultDisplay.classList.add("fail");
           resultDisplay.classList.remove("success");
-          resultDisplay.innerHTML = "Failed to copy text. Your browser may not support the necessary APIs.";
+          resultDisplay.innerText = "Failed to copy text. Your browser may not support the necessary APIs.";
         }
       }
     </script>
